@@ -1,15 +1,15 @@
 import os
 from flask import Flask, request, jsonify
 from telegram import Update, Bot
-from telegram.ext import Dispatcher, CommandHandler, MessageHandler, Filters
-from telegram.ext import Updater
+from telegram.ext import Dispatcher, CommandHandler, MessageHandler, filters
 
 app = Flask(__name__)
 
 # Inicializar o bot com o token da variável de ambiente
-TELEGRAM_TOKEN = os.getenv('7564651101:AAGOOkbJYA7N8yU_0SrNlqhZQVQNGseP1xQ')
+TELEGRAM_TOKEN = os.getenv('7564651101:AAGOOkbJYA7N8yU_0SrNlqhZQVQNGseP1xQ')  # Defina seu token no ambiente
 if not TELEGRAM_TOKEN:
     raise ValueError("Token do Telegram não encontrado. Configure a variável de ambiente TELEGRAM_TOKEN.")
+
 bot = Bot(token=TELEGRAM_TOKEN)
 
 # Funções para comandos do bot
@@ -21,9 +21,9 @@ def echo(update, context):
     update.message.reply_text(update.message.text)
 
 # Configurar o Dispatcher para lidar com os comandos e mensagens
-dispatcher = Dispatcher(bot, None)
+dispatcher = Dispatcher(bot, None, workers=0)
 dispatcher.add_handler(CommandHandler("start", start))
-dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
+dispatcher.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo))
 
 # Rota principal de verificação
 @app.route('/')
