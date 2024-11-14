@@ -6,7 +6,7 @@ from telegram.ext import Dispatcher, CommandHandler, MessageHandler, Filters
 app = Flask(__name__)
 
 # Inicializar o bot com o token da variável de ambiente
-TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')  # Defina seu token no ambiente
+TELEGRAM_TOKEN = os.getenv('7564651101:AAGOOkbJYA7N8yU_0SrNlqhZQVQNGseP1xQ')  # Defina seu token no ambiente
 if not TELEGRAM_TOKEN:
     raise ValueError("Token do Telegram não encontrado. Configure a variável de ambiente TELEGRAM_TOKEN.")
 
