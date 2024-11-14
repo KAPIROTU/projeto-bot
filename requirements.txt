@@ -1,4 +1,4 @@
 Flask
 pymongo==4.1.0
 gunicorn
-python-telegram-bot
+python-telegram-bot==13.14
